@@ -3,11 +3,24 @@
     {
 
 
+        // $test_anagram_one_character = new Anagram;
+        // $input_word = 'i';
+        // $possible_match = 'i';
+        //
+        // //Act
+        // $result = $test_anagram_one_character->generateAnagram($input_word, $possible_match);
+        //
+        // //Assert
+        // $expected = array(true);
+        // $this->assertEquals($expected, $result);
+        // }
+
+
+
         function generateAnagram($input_word, $possible_matches)
         {
             $result = array();
             $exploded_possible_matches = array();
-            $exploded_possible_matches = explode(" ", $possible_matches);
 
             $total_list_items = str_word_count($possible_matches);
 
@@ -19,16 +32,20 @@
 
                 $split_match = str_split($possible_matches);
                 sort($split_match);
+
                 if( $split_input == $split_match)
                 {
                     array_push($result, true);
-                } else {
+                }
+                else {
                     array_push($result, false);
                 }
-            return $result;
 
-                // $exploded_possible_matches = $possible_matches;
-            } else {
+                return $result;
+
+            }
+
+            else {
 
                 $exploded_possible_matches = explode(" ", $possible_matches);
             }
@@ -56,16 +73,6 @@
                     }
                     return $result;
                 }
-
-            // sort($split_match);
-            //
-            //
-            // if( $split_input == $split_match)
-            // {
-            //     array_push($result, true);
-            // } else {
-            //     array_push($result, false);
-            // }
 
 
     }
