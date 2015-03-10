@@ -50,6 +50,21 @@
             $this->assertEquals($expected, $result);
         }
 
+        function testAnagramMultipleWords()
+        {
+            //Arrange
+
+            $test_anagram_multiple_words = new Anagram;
+            $input_word = 'abc';
+            $possible_matches ='bca acb cab';
+
+            //Act
+            $result = $test_anagram_multiple_words->generateAnagram($input_word, $possible_matches);
+
+            //Assert
+            $expected = array(true, true, true);
+            $this->assertEquals($expected, $result);
+        }
     }
 
 

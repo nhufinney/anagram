@@ -3,41 +3,69 @@
     {
 
 
-        function generateAnagram($input_word, $possible_match)
+        function generateAnagram($input_word, $possible_matches)
         {
             $result = array();
+            $exploded_possible_matches = array();
+            $exploded_possible_matches = explode(" ", $possible_matches);
 
-            $split_input = array();
-            $split_match = array();
+            $total_list_items = str_word_count($possible_matches);
 
-            $split_input = str_split($input_word);
-            $split_match = str_split($possible_match);
-
-            sort($split_input);
-            sort($split_match);
-
-
-            if( $split_input == $split_match)
+            if ( $total_list_items <= 1)
             {
-                array_push($result, true);
-            } else {
-                array_push($result, false);
-            }
+                $split_input = array();
+                $split_input = str_split($input_word);
+                sort($split_input);
 
+                $split_match = str_split($possible_matches);
+                sort($split_match);
+                if( $split_input == $split_match)
+                {
+                    array_push($result, true);
+                } else {
+                    array_push($result, false);
+                }
             return $result;
 
-            // foreach ($split_input_sorted as $character)
-                // if (array_intersect($character, $split_match_sorted))
-                // {
-                //     array_push($result, true);
-                //     return true;
-                // } else {
-                //     return false;
-                // }
+                // $exploded_possible_matches = $possible_matches;
+            } else {
+
+                $exploded_possible_matches = explode(" ", $possible_matches);
+            }
 
 
-                // $compare_two_arrays_result = array_intersect($split_input_sorted, $split_match_sorted);
+            foreach ($exploded_possible_matches as $one_word_in_match_array)
+            {
+                $split_input = array();
+                $split_match = array();
 
+                $split_input = str_split($input_word);
+                sort($split_input);
+
+                $split_match = str_split($one_word_in_match_array);
+                sort($split_match);
+
+                    foreach($split_match as $character)
+                    {
+                        if( $split_input == $split_match)
+                        {
+                            array_push($result, true);
+                        } else {
+                            array_push($result, false);
+                        }
+                    }
+                    return $result;
+                }
+
+            // sort($split_match);
+            //
+            //
+            // if( $split_input == $split_match)
+            // {
+            //     array_push($result, true);
+            // } else {
+            //     array_push($result, false);
+            // }
 
 
     }
